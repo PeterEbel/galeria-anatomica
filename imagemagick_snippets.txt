@@ -1,0 +1,66 @@
+Cropping
+========
+for i in *.PCD; do convert -crop +165+133 -crop -133-133 -colorspace gray -quality 50 -brightness-contrast 20x20 $i[6] -resize 1024 erste-hilfe-${i:5:2}.jpg; done
+
+Extension abschneiden
+=====================
+for i in *.PCD; do convert -crop +165+133 -crop -133-133 -colorspace gray -quality 50 -brightness-contrast 5 $i[6] -resize 1024 ${i%????}.jpg; done
+
+Automatische Tonwertkorrektur
+=============================
+for i in *.PCD; do convert $i[6] -colorspace Lab -channel 0 -auto-level +channel -colorspace sRGB -resize 1024 ${i}.jpg; done
+
+inkl. Crop
+for i in *.PCD; do convert $i[6] -crop +100+100 -crop -100-100 -colorspace Lab -channel 0 -auto-level +channel -colorspace sRGB -resize 1024 ${i}.jpg; done
+
+Schlagschatten hinzufügen
+=========================
+convert test.png \( +clone -background 'rgb(141,141,141)' -shadow 80x30+50+50 -channel RGBA -blur 0x6 \) +swap -background white -layers merge +repage output_shadowed.png
+
+Schlagschatten hinzufügen + Hintergrund weiß + Resize + Extent
+===========================================
+convert test.png -resize '2480x3508' `( +clone -background 'rgb(141,141,141)' -shadow 80x30+50+50 -channel RGBA -blur 0x6 `) +swap -background white -layers merge +repage -extent '2480x3508' output_shadowed.png
+
+Schlagschatten hinzufügen + Hintergrund weiß + Extent
+==================================
+convert test.png \( +clone -background 'rgb(141,141,141)' -shadow 80x30+50+50 -channel RGBA -blur 0x6 \) +swap -background white -layers merge +repage -gravity Center -extent '2480x3508' output_shadowed.png
+
+Schlagschatten hinzufügen + Hintergrund transparent + Extent
+==================================
+convert test.png \( +clone -background 'rgb(141,141,141)' -shadow 80x30+50+50 -channel RGBA -blur 0x8 \) +swap -background transparent -layers merge +repage -gravity Center -extent '2480x3508' output_shadowed.png
+
+Vintage Hintergrund
+===================
+composite -compose atop -gravity Center output_shadowed.png background.png composed.png
+
+RBG to CMYK mit ICC-Profil sowie Helligkeits-/Kontrastanpassung
+===============================================================
+convert .\01-01-000-01-PX.psd -colorspace CMYK -profile .\ISOcoated_v2_300_eci.icc -brightness-contrast 10x10  .\01-01-000-01-PX.tif
+
+Photoshop PSD Alle Ebenen auf einen mit transparentem Hintergrund reduzieren
+============================================================================
+convert 05-04-121-01-LW.psd  -background transparent -layers merge +repage -gravity Center test.psd
+
+PSD to JPG mit alle Ebenen reduziert und mit weißem Hintergrund
+============================================================================
+convert 05-04-121-01-LW.psd  -layers merge +repage -gravity Center `( +clone -background white `) -flatten -quality 75% test.jpg
+
+Text hinzufügen
+===============
+convert 01-01-000-01-01.psd `( +clone -background 'rgb(141,141,141)' -shadow 50x20+50+50 -channel RGBA -blur 0x6 `) -gravity Center +swap -background transparent -layers merge +repage -extent '2480x3508' -font calibri-bold -fill black -pointsize 240 -gravity north -draw "text 0,100 'Die Wirbelsäule'" 01-01-000-01-01-tmp.png
+
+
+Check!!!
+convert test.png -gravity 'northwest' -background 'rgba(255,255,255,0)' -splice '10x10' \( +clone -background '#005f005f005f0000' -shadow "80x3-1-1" \) +swap -background none -mosaic +repage \( +clone -background '#005f005f005f0000' -shadow "80x3+5+5" \) +swap -background none -mosaic +repage out.png
+
+-font helvetica -fill white -pointsize 60 -gravity center -draw "text 0,300 'TEXT TO BE DISPLAYED'
+
+
+
+
+
+ImageMagick aus Python heraus aufrufen
+======================================
+import subprocess
+cmd = '/usr/local/bin/convert -size 30x40 xc:white -fill white -fill black -font Arial -pointsize 40 -gravity South -draw "text 0,0 \'P\'" /Users/fred/desktop/draw_text2.gif'
+subprocess.call(cmd, shell=True)

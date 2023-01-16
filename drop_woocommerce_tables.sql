@@ -1,0 +1,16 @@
+drop table wp_galeria_anatomica.wp_actionscheduler_actions;
+drop table wp_galeria_anatomica.wp_actionscheduler_claims;
+drop table wp_galeria_anatomica.wp_actionscheduler_groups;
+drop table wp_galeria_anatomica.wp_actionscheduler_logs;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_dhl_im_product_services;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_dhl_im_products;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_dhl_labelmeta;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_dhl_labels;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_packaging;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_packagingmeta;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_shipment_itemmeta;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_shipment_items;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_shipmentmeta;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_shipments;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_shipping_provider;
+drop table wp_galeria_anatomica.wp_woocommerce_gzd_shipping_providermeta;

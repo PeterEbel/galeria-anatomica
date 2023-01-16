@@ -1,0 +1,37 @@
+p[style-name='Heading 1'] => h1:fresh
+p[style-name='Heading 2'] => h2:fresh
+p[style-name='Heading 3'] => h3:fresh
+p[style-name='Heading 4'] => h4:fresh
+p[style-name='Heading 5'] => h5:fresh
+p[style-name='Heading 6'] => h6:fresh
+p[style-name='Heading 7'] => p.h7:fresh
+p[style-name='Standard Wiki'] => p:fresh
+p[style-name='Shop'] => p.shop:fresh
+p[style-name='Standard Wiki ohne EA'] => p.zero-space-after:fresh
+p[style-name='Absatz fett'] => p.bold:fresh
+p[style-name='Absatz kursiv'] => p.italic:fresh
+p[style-name='Absatz Aufzählung'] => ul > li.hanging-indent:fresh
+p[style-name='Absatz Numerierung'] => ol > li.hanging-indent:fresh
+p[style-name='Standard Tabelle'] => ol > p.tabelle:fresh
+
+p[style-name='Homoeomittel'] => p.homoeomittel:fresh
+p[style-name='Homoeomittel mit Einzug'] => p.homoeomittel-left-indent:fresh
+p[style-name='Normalwerte'] => p.normalwerte:fresh
+
+p[style-name='FlexboxContainerLanding'] => div.flexbox-container-landing
+p[style-name='FlexboxContainerToC'] => div.flexbox-container-toc
+p[style-name='FlexboxContainerProduct'] => div.flexbox-product-container
+
+p[style-name='Bild'] => div.wiki-image > p.wiki-image:fresh
+p[style-name='ProduktBild'] => div.wiki-product-image > p.wiki-product-image:fresh
+p[style-name='Audio'] => div.wiki-audio-section > p.wiki-audio:fresh
+p[style-name='Abbildungsbezeichnung'] => div.wiki-image-caption > p.bu:fresh
+p[style-name='Lizenzhinweis'] => div.wiki-image-license > p.lizenzhinweis:fresh
+
+b => em
+
+p[style-name='Verweis'] => !
+p[style-name='List Bullet'] => !
+p[style-name='GrafikFehlt'] => !
+p[style-name='heading 8'] => !
+p[style-name='Zeichen tiefgestellt'] => !
